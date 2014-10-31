@@ -1,0 +1,1 @@
+This repository contains helpful code snippets and examples.
