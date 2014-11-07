@@ -8,8 +8,8 @@
 <?php
 
   if (isset($_GET['ox_token'])) {
- 
-		$ox_token = $_GET['ox_token'];
+
+        $ox_token = $_GET['ox_token'];
         print "<h1>Hello World Service</h1>";
 
         $client = urlencode("PHP-Redeem-Client-v0.1");
@@ -38,7 +38,7 @@
                 $json_obj = json_decode($post, true);
 
                 if (array_key_exists("error", $json_obj)) {
-						// An error occurred, we show the reason as given in the response and within the related attributes
+                        // An error occurred, we show the reason as given in the response and within the related attributes
                         print "<h2>Error</h2>".$json_obj['error']."<BR>".$json_obj['error_desc'];
                 } else {
                         if (array_key_exists("session", $json_obj)) {
@@ -46,7 +46,7 @@
                                 print "<h2>Got a session from OX AppSuite middleware</h2>";
                                 print "Session ID: ".$ox_sessionid;
 
-								 // Manually extracting cookies...maybe we should use a function that covers that for us. Feel free to optimize ;)
+                                 // Manually extracting cookies...maybe we should use a function that covers that for us. Feel free to optimize ;)
                                  $cookies = array();
                                  foreach ($http_response_header as $hdr) {
                                     if (preg_match('/^Set-Cookie:\s*([^;]+)/', $hdr, $matches)) {
@@ -54,7 +54,7 @@
                                                 $cookies += $tmp;
                                     }
                                  }
-								 // Building cookie string together. This is important for the authentication as we must send all cookies back!
+                                 // Building cookie string together. This is important for the authentication as we must send all cookies back!
                                  $ox_cookies = "";
                                  $count = 1;
                                  foreach ($cookies as $key => $value) {
@@ -67,7 +67,7 @@
                                         $count = $count + 1;
                                  }
 
-								 // Get request to fetch the capabilities from the middleware
+                                 // Get request to fetch the capabilities from the middleware
                                  $opts = array(
                                         'http'=>array(
                                         'method'=>"GET",
@@ -78,7 +78,7 @@
                                  );
 
                                  $url = 'http://'.$ox_server_domain.'/ajax/capabilities?action=all&session='.$ox_sessionid;
-                                 
+
                                  $context = stream_context_create($opts);
                                  $capabilities = file_get_contents($url, false, $context);
                                  print "<h2>Got capabilities</h2>";
@@ -93,6 +93,6 @@
             echo "POST failed";
         }
 
- } 
- 
+ }
+
 ?>
