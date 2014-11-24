@@ -16,7 +16,7 @@
 # oxc.login()
 # oxc.capabilities()
 #
-# Written https://github.com/bishoph
+# Written by https://github.com/bishoph
 #
 
 import urllib2
