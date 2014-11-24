@@ -12,7 +12,7 @@
 # 
 # usage example:
 # 
-# oxc = ox.com_handler(params.getvalue('ox_token'), 'localhost', 'THE-SECRET-IN-THE-FILE-tokenlogin-secrets')
+# oxc = ox.com_handler(params.getvalue('ox_token'), 'PUT_YOUR_SERVER_DOMAIN_HERE', 'THE-SECRET-IN-THE-FILE-tokenlogin-secrets')
 # oxc.login()
 # oxc.capabilities()
 #
