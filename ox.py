@@ -12,7 +12,7 @@
 # 
 # usage example for http:
 #
-# oxc = ox.com_handler(params.getvalue('ox_token'), 'PUT_YOUR_SERVER_DOMAIN_HERE', 'THE-SECRET-IN-THE-FILE-tokenlogin-secrets')
+# oxc = ox.com_handler(params.getvalue('ox_token'), 'PUT_YOUR_SERVER_DOMAIN_HERE', 'THE-SECRET-IN-THE-FILE-tokenlogin-secrets', None)
 # oxc.login()
 # oxc.capabilities()
 #
@@ -51,7 +51,7 @@ class com_handler:
   myuuid = uuid.uuid4()
   formdata = { "token" : self.ox_token, "client": self.client, "authId" : myuuid, "secret": self.secret }
   data_encoded = urllib.urlencode(formdata)
-  request = urllib2.Request(url = proto + self.ox_server + '/ajax/login?action=redeemToken', data = data_encoded)
+  request = urllib2.Request(url = self.proto + self.ox_server + '/ajax/login?action=redeemToken', data = data_encoded)
   f = urllib2.urlopen(request) 
   json_response = f.read()
   json_obj = json.loads(json_response)
@@ -60,7 +60,7 @@ class com_handler:
   
  def capabilities(self):
   if (self.ox_sessionid != None):
-   request = urllib2.Request(url = propto + self.ox_server + '/ajax/capabilities?action=all&session='+self.ox_sessionid)
+   request = urllib2.Request(url = self.proto + self.ox_server + '/ajax/capabilities?action=all&session='+self.ox_sessionid)
    f = urllib2.urlopen(request)
    print (f.read())
   else:
