@@ -11,7 +11,6 @@ $client = urlencode("PHP-Redeem-Client-v0.1");
 $uuid = urlencode(md5(uniqid()));
 $secret = urlencode("THE-SECRET-IN-THE-FILE-tokenlogin-secrets");
 $ox_server_domain = "PUT_YOUR_SERVER_DOMAIN_HERE";
-$context;
 $ox_cookies;
 
 function showResults($ox_sessionid, $ox_cookies) {
@@ -41,7 +40,7 @@ function doError($msg) {
 }
 
 function doLogin($ox_token) {
- global $client, $uuid, $secret, $ox_server_domain, $context;
+ global $client, $uuid, $secret, $ox_server_domain;
  $url_encoded_string_params = "token=".$ox_token."&client=".$client."&authId=".$uuid."&secret=".$secret;
  $context = stream_context_create(array(
   'http' => array(
