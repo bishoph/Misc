@@ -97,7 +97,7 @@ if (isset($_GET['ox_token'])) {
     $ox_sessionid = $json_obj['session'];
     // set cookie && redirect with a HTTP 302
     $encoded_cookie = base64_encode($ox_cookies);
-    $expires = time() + 60;
+    $expires = time() + (60 * 60 * 24); // 24 hours
     setcookie('redeemSessionCookie', $encoded_cookie, $expires);
     $url = "http".(!empty($_SERVER['HTTPS'])?"s":"")."://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME'];
     header("Location: ".$url."?session=".$ox_sessionid, true, 302);
