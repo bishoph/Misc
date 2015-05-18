@@ -5,14 +5,14 @@
 
 # CONFIG OPTIONS
 
-# output and debudding
+# output and debugging
 # 0 = normal report
-# 2 = more details whats goping on
+# 2 = more details whats going on
 # 5 = all we have
 DEBUG=0
 
 # 0 = check config
-# 1 = read curent config and can be used with DEBUG=0 to create reference file (./analyse_config.sh > OX_7_6_2.STANDARDS)
+# 1 = read current config and can be used with DEBUG=0 to create reference file (./analyse_config.sh > OX_7_6_2.STANDARDS)
 CREATE_OUTPUT=0
 
 # conf file directory
